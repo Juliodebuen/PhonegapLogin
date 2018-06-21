@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="stylesheet" type="text/css" href="../platforms/browser/css/index.css" />
+        <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+		<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+		<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/module.js"></script>
+
+        <title>QBIts Ticket</title>
+        <script type="text/javascript">
+        	/*$(document).ready(function(){
+        		$("#mainPage").hide();
+        	});*/
+
+        	
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="cordova.js"></script>
+
+
+        <ons-navigator swipeable id="myNavigator" page="loginPage.html"></ons-navigator>
+		<template id="loginPage.html">
+		  <ons-page id="loginPage">
+		    <ons-toolbar>
+		      <div class="center">Inicio de sesión</div>
+		    </ons-toolbar>
+		    	<div>
+		    	</div>
+		    	<span>
+		  			<div>
+		    			<p style="text-align: center">
+		  					<input id='user' class="text-input text-input--material" placeholder="Nombre de usuario" type="text" required>
+		  				</p>
+		  			</div>
+		  			<div>
+		    			<p style="text-align: center">
+		  					<input id='pass' class="text-input text-input--material" placeholder="Contraseña" type="password" required>
+		  				</p>
+		  			</div>
+				</span>
+		    <p style="text-align: center">
+		    	<button class="button" id="push-button">Iniciar sesión</button>
+		    	<!--<ons-button id="push-button">Iniciar sesión</ons-button> -->
+		    </p>
+		    <p style="text-align: center">
+		    	<button class="button button--outline" id="register-button">Crear cuenta</button>
+		    </p>
+		  </ons-page>
+		</template>
+
+		<template id="mainPage.html">
+		  <ons-page id="mainPage">
+		    <ons-toolbar>
+		      <div class="left"><ons-back-button>Cerrar sesión</ons-back-button></div>
+		      <div class="center"></div> 
+		    </ons-toolbar>
+
+		    <div id=bienvenida></div>
+		  </ons-page>
+		</template> 
+
+		<template id="registerPage.html">
+		  <ons-page id="registerPage">
+		    <ons-toolbar>
+		      <div class="left"><ons-back-button>Inicio de sesión</ons-back-button></div>
+		      <div class="center">Crear cuenta</div>
+		    </ons-toolbar>
+		    	<div>
+		    	</div>
+		    	<span>
+		    		<div>
+		    			<p style="text-align: center">
+		  					<input id='nameRegister' class="text-input text-input--material" placeholder="Nombre" type="text" required>
+		  				</p>
+		  			</div>
+		  			<div>
+		    			<p style="text-align: center">
+		  					<input id='userRegister' class="text-input text-input--material" placeholder="Nombre de usuario" type="text" required>
+		  				</p>
+		  			</div>
+		  			<div>
+		    			<p style="text-align: center">
+		  					<input id='passRegister' class="text-input text-input--material" placeholder="Contraseña" type="password" required>
+		  				</p>
+		  			</div>
+				</span>
+		    <p style="text-align: center">
+		    	<button class="button button--outline" id="confirm-register-button">Crear cuenta</button>
+		    </p>
+		  </ons-page>
+		</template>
+
+		<template id="alert-dialog.html">
+		  <ons-alert-dialog id="my-alert-dialog" modifier="rowfooter">
+		    <div id='dialog-title' class="alert-dialog-title">Bienvenido</div>
+		    <div id='content-dialog' class="alert-dialog-content">
+		      
+		    </div>
+		    <div class="alert-dialog-footer">
+		      <ons-alert-dialog-button id="dialog-button" onclick="hideAlertDialog()">OK</ons-alert-dialog-button>
+		    </div>
+		  </ons-alert-dialog>
+		</template>
+
+		<template id="logout-dialog.html">
+		  <ons-alert-dialog id="my-logout-dialog" modifier="rowfooter">
+		    <div id='dialog-title' class="alert-dialog-title">Confirmación</div>
+		    <div id='content-dialog' class="alert-dialog-content">
+		      ¿Quieres cerrar sesión?
+		    </div>
+		    <div class="alert-dialog-footer">
+		      <ons-alert-dialog-button id="dialog-button" onclick="hideLogoutDialog(true)">Si</ons-alert-dialog-button>
+		      <ons-alert-dialog-button id="dialog-button" onclick="hideLogoutDialog(false)">Cancelar</ons-alert-dialog-button>
+		    </div>
+		  </ons-alert-dialog>
+		</template>
+    </body>
+</html>

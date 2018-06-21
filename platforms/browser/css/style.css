@@ -1,0 +1,13 @@
+.wrapper{
+	text-align: center;
+}
+
+
+#btnLogin{
+	position: absolute;
+	top: 50%
+}
+
+.parrafo{
+	color: red;
+}
