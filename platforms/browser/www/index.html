@@ -22,6 +22,8 @@
     <body>
         <script type="text/javascript" src="cordova.js"></script>
 
+        
+
 
         <ons-navigator swipeable id="myNavigator" page="loginPage.html"></ons-navigator>
 		<template id="loginPage.html">
@@ -55,13 +57,25 @@
 
 		<template id="mainPage.html">
 		  <ons-page id="mainPage">
-		    <ons-toolbar>
+		    <!--<ons-toolbar>
 		      <div class="left"><ons-back-button>Cerrar sesión</ons-back-button></div>
 		      <div class="center"></div> 
-		    </ons-toolbar>
+		    </ons-toolbar> -->
+		    <div class="toolbar toolbar--noshadow">
+			  <div class="toolbar__left">
+			    <span class="toolbar-button">
+			      <i id=menu-button class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+			    </span>
+			  </div>
+			  <div class="toolbar__center">
+			    Menú principal
+			  </div>
+			  <div class="toolbar__right">
+			    <span id="logout" class="toolbar-button">Cerrar sesión</span>
+			  </div>
+			</div>
 
-		    <div id=bienvenida></div>
-		  </ons-page>
+		    <div id=bienvenida></div> 
 		</template> 
 
 		<template id="registerPage.html">
@@ -90,7 +104,7 @@
 		  			</div>
 				</span>
 		    <p style="text-align: center">
-		    	<button class="button button--outline" id="confirm-register-button">Crear cuenta</button>
+		    	<button class="button" id="confirm-register-button">Crear cuenta</button>
 		    </p>
 		  </ons-page>
 		</template>
@@ -109,8 +123,8 @@
 
 		<template id="logout-dialog.html">
 		  <ons-alert-dialog id="my-logout-dialog" modifier="rowfooter">
-		    <div id='dialog-title' class="alert-dialog-title">Confirmación</div>
-		    <div id='content-dialog' class="alert-dialog-content">
+		    <div id='logout-dialog-title' class="alert-dialog-title">Confirmación</div>
+		    <div id='logout-content-dialog' class="alert-dialog-content">
 		      ¿Quieres cerrar sesión?
 		    </div>
 		    <div class="alert-dialog-footer">
@@ -119,5 +133,6 @@
 		    </div>
 		  </ons-alert-dialog>
 		</template>
+
     </body>
 </html>

@@ -1,5 +1,8 @@
 	var page;
 	var username;
+
+
+
 	document.addEventListener('init', function(event) {
 	  page = event.target;
 
@@ -18,14 +21,17 @@
 	    };*/
 	  } 
 	  else if (page.id === 'mainPage') {
-	    page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
-	    page.querySelector('#bienvenida').innerHTML = page.data.username;
+	    //page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+	 //  page.querySelector('#bienvenida').innerHTML = page.data.username;
 
-	    document.querySelector('ons-back-button').onClick = function(event) {
+	    document.getElementById('logout').onclick = logoutDialog;
+	    /* function(event) {
 		  // Reset the whole stack instead of popping 1 page
 			logoutDialog();
-		  
-		};
+		
+		};*/
+
+		//document.getElementById('menu-button').onclick = fn.open;
 	  } 
 	  else if(page.id = 'registerPage'){
 	  	$('#confirm-register-button').click(function(){
@@ -94,6 +100,7 @@
 			   			ons.notification.alert("Usuario o contraseña incorrectos");
 				    }
 			    }catch(e){
+			    	console.log(e);
 			   		ons.notification.alert("ocurrio un error, intentelo de nuevo");
 			    }
 			  }
@@ -108,7 +115,7 @@
 		}
 	};
 
-
+/*
 
 	var notify = function() {
 		var user = document.getElementById('user');
@@ -146,45 +153,44 @@
 
 			xhr.send(data);
 		}
-	};
+	}; */
 
 	var createAlertDialog = function(username, title) {
-		  var dialog = document.getElementById('my-alert-dialog');
-		  this.username = username;
-		  if (dialog) {
-		    dialog.show();
-		  } else {
-		    ons.createElement('alert-dialog.html', { append: true })
-		      .then(function(dialog) {
+		var dialog = document.getElementById('my-alert-dialog');
+		this.username = username;
+		if (dialog) {
+			dialog.remove();
+		}
+
+    	ons.createElement('alert-dialog.html', { append: true })
+		    .then(function(dialog) {
 		      	document.getElementById('dialog-title').innerHTML = title;
 		      	document.getElementById('content-dialog').innerHTML = username;
 		        dialog.show();
-		      });
-		  }
+		    }
+	    );
 		  
-		};
+	};
 
-		var logoutDialog = function() {
-		  var dialog = document.getElementById('my-logout-dialog');
-		  this.username = username;
-		  if (dialog) {
-		    dialog.show();
-		  } else {
-		    ons.createElement('logout-dialog.html', { append: true })
-		      .then(function(dialog) {
-		      	document.getElementById('dialog-title').innerHTML = "asdasd";
-		      	document.getElementById('content-dialog').innerHTML = "username";
-		        dialog.show();
-		      });
-		  }
+	var logoutDialog = function() {
+		var dialog = document.getElementById('my-logout-dialog');
+	    this.username = username;
+		if (dialog) {
+			dialog.remove();
+		 } 
+	    ons.createElement('logout-dialog.html', { append: true })
+	      .then(function(dialog) {
+	        dialog.show();
+	      });
 		  
-		};
+		 
+	};
 
 	var hideAlertDialog = function() {
 	  document
 	    .getElementById('my-alert-dialog')
 	    .hide();
-
+    	//alert(page.id);
     	switch(page.id){
     		case 'loginPage':
     			document.querySelector('#myNavigator').pushPage('mainPage.html', {
@@ -195,7 +201,9 @@
 		 		});
 		 		break;
 	 		case 'registerPage':
+	 			page.id = 'loginPage';
 	 			document.querySelector('#myNavigator').popPage();
+	 			break;
     	}	 	
 
 	 //	var template = document.getElementById("mainPage.html");//$('#mainPage.html');  acceder a elemento dentro de un template
@@ -207,6 +215,7 @@
     var hideLogoutDialog = function(confirmar){
     	document.getElementById('my-logout-dialog').hide();
 		if(confirmar){
+			page.id = 'loginPage';
 			document.querySelector("#myNavigator").popPage();
 		}
     }
